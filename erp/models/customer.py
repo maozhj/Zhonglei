@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 
 class Customer(models.Model):
@@ -21,3 +22,7 @@ class Customer(models.Model):
 
     def __str__(self):
         return '{0} - {1}'.format(self.customer_code, self.customer_name)
+
+
+class CustomerAdmin(admin.ModelAdmin):
+    list_display = ('customer_name', 'customer_code', 'customer_type', 'contact', 'address', 'tel', 'email')

@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib import admin
+
 from .customer import Customer
 
 
@@ -16,3 +18,7 @@ class Contract(models.Model):
     def __str__(self):
         return self.contract_name
 
+
+class ContractAdmin(admin.ModelAdmin):
+    list_display = ('contract_name', 'customer', 'date_signed', 'delivery_date', 'contract_code')
+    search_fields = ('contract_name', 'customer__customer_name', 'customer__customer_code')
